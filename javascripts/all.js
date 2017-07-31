@@ -17317,6 +17317,11 @@ window.YouTube = (function($, window, document) {
 
   $(function() {
     initMobileMenu();
+    $('.dolphin img').hover((function() {
+      return $(this).attr('src', '../images/dolphin@2x.gif');
+    }), function() {
+      return $(this).attr('src', '../images/dolphin.png');
+    });
     $(".nav-item a").on('click', function() {
       return $.scrollTo(this.hash, 500, {
         easing: 'swing'
