@@ -21563,7 +21563,7 @@ window.YouTube = (function($, window, document) {
     }
 })(jQuery, window, document);
 (function() {
-  var initMobileMenu;
+  var changeElementBg, initMobileMenu;
 
   initMobileMenu = function() {
     var body, button, linkBtns, menu, overlay;
@@ -21589,13 +21589,44 @@ window.YouTube = (function($, window, document) {
     };
   };
 
+  changeElementBg = function() {
+    var interval;
+    interval = 0;
+    return $('.js-main-bg-image').each(function() {
+      var $this;
+      $this = $(this);
+      return setInterval((function() {
+        $('.js-main-bg-image').removeClass('current');
+        return $this.addClass('current');
+      }), interval += 5000);
+    });
+  };
+
   $(function() {
     initMobileMenu();
+    changeElementBg();
+    $('.tooltip').on('click', function(e) {
+      return e.preventDefault();
+    });
     $('.tooltip').tooltipster({
       theme: 'tooltipster-shadow',
       contentAsHTML: true,
-      delay: 100,
-      distance: 0
+      delay: 0,
+      distance: 0,
+      trigger: 'custom',
+      triggerOpen: {
+        mouseenter: true,
+        touchstart: true,
+        click: true,
+        tap: true
+      },
+      triggerClose: {
+        mouseleave: true,
+        originClick: true,
+        touchleave: true,
+        tap: true,
+        click: true
+      }
     });
     $(".nav-item a").on('click', function() {
       return $.scrollTo(this.hash, 500, {
