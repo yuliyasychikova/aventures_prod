@@ -15032,24 +15032,24 @@ window.Modernizr = (function( window, document, undefined ) {
 * http://dimsemenov.com/plugins/magnific-popup/
 * Copyright (c) 2016 Dmitry Semenov; */
 
-;(function (factory) {
-if (typeof define === 'function' && define.amd) {
- // AMD. Register as an anonymous module.
- define(['jquery'], factory);
- } else if (typeof exports === 'object') {
- // Node/CommonJS
- factory(require('jquery'));
- } else {
- // Browser globals
- factory(window.jQuery || window.Zepto);
- }
- }(function($) {
+;(function (factory) { 
+if (typeof define === 'function' && define.amd) { 
+ // AMD. Register as an anonymous module. 
+ define(['jquery'], factory); 
+ } else if (typeof exports === 'object') { 
+ // Node/CommonJS 
+ factory(require('jquery')); 
+ } else { 
+ // Browser globals 
+ factory(window.jQuery || window.Zepto); 
+ } 
+ }(function($) { 
 
 /*>>core*/
 /**
- *
+ * 
  * Magnific Popup Core JS file
- *
+ * 
  */
 
 
@@ -15071,7 +15071,7 @@ var CLOSE_EVENT = 'Close',
 
 
 /**
- * Private vars
+ * Private vars 
  */
 /*jshint -W079 */
 var mfp, // As we have only one instance of MagnificPopup object, we define it locally to not to use 'this'
@@ -15140,15 +15140,15 @@ var _mfpOn = function(name, f) {
 			v = ['ms','O','Moz','Webkit']; // 'v' for vendor
 
 		if( s['transition'] !== undefined ) {
-			return true;
+			return true; 
 		}
-
+			
 		while( v.length ) {
 			if( v.pop() + 'Transition' in s ) {
 				return true;
 			}
 		}
-
+				
 		return false;
 	};
 
@@ -15162,7 +15162,7 @@ MagnificPopup.prototype = {
 	constructor: MagnificPopup,
 
 	/**
-	 * Initializes Magnific Popup plugin.
+	 * Initializes Magnific Popup plugin. 
 	 * This function is triggered only once when $.fn.magnificPopup or $.magnificPopup is executed
 	 */
 	init: function() {
@@ -15188,7 +15188,7 @@ MagnificPopup.prototype = {
 
 		var i;
 
-		if(data.isObj === false) {
+		if(data.isObj === false) { 
 			// convert jQuery collection to array to avoid conflicts later
 			mfp.items = data.items.toArray();
 
@@ -15215,8 +15215,8 @@ MagnificPopup.prototype = {
 			mfp.updateItemHTML();
 			return;
 		}
-
-		mfp.types = [];
+		
+		mfp.types = []; 
 		_wrapClasses = '';
 		if(data.mainEl && data.mainEl.length) {
 			mfp.ev = data.mainEl.eq(0);
@@ -15235,7 +15235,7 @@ MagnificPopup.prototype = {
 
 
 
-		mfp.st = $.extend(true, {}, $.magnificPopup.defaults, data );
+		mfp.st = $.extend(true, {}, $.magnificPopup.defaults, data ); 
 		mfp.fixedContentPos = mfp.st.fixedContentPos === 'auto' ? !mfp.probablyMobile : mfp.st.fixedContentPos;
 
 		if(mfp.st.modal) {
@@ -15244,7 +15244,7 @@ MagnificPopup.prototype = {
 			mfp.st.showCloseBtn = false;
 			mfp.st.enableEscapeKey = false;
 		}
-
+		
 
 		// Building markup
 		// main containers are created only once
@@ -15296,7 +15296,7 @@ MagnificPopup.prototype = {
 			_wrapClasses += ' mfp-align-top';
 		}
 
-
+	
 
 		if(mfp.fixedContentPos) {
 			mfp.wrap.css({
@@ -15305,7 +15305,7 @@ MagnificPopup.prototype = {
 				overflowY: mfp.st.overflowY
 			});
 		} else {
-			mfp.wrap.css({
+			mfp.wrap.css({ 
 				top: _window.scrollTop(),
 				position: 'absolute'
 			});
@@ -15317,7 +15317,7 @@ MagnificPopup.prototype = {
 			});
 		}
 
-
+		
 
 		if(mfp.st.enableEscapeKey) {
 			// Close on ESC key
@@ -15336,7 +15336,7 @@ MagnificPopup.prototype = {
 		if(!mfp.st.closeOnContentClick) {
 			_wrapClasses += ' mfp-auto-cursor';
 		}
-
+		
 		if(_wrapClasses)
 			mfp.wrap.addClass(_wrapClasses);
 
@@ -15344,7 +15344,7 @@ MagnificPopup.prototype = {
 		// this triggers recalculation of layout, so we get it once to not to trigger twice
 		var windowHeight = mfp.wH = _window.height();
 
-
+		
 		var windowStyles = {};
 
 		if( mfp.fixedContentPos ) {
@@ -15365,8 +15365,8 @@ MagnificPopup.prototype = {
 			}
 		}
 
-
-
+		
+		
 		var classesToadd = mfp.st.mainClass;
 		if(mfp.isIE7) {
 			classesToadd += ' mfp-ie7';
@@ -15382,16 +15382,16 @@ MagnificPopup.prototype = {
 
 		// remove scrollbar, add margin e.t.c
 		$('html').css(windowStyles);
-
+		
 		// add everything to DOM
 		mfp.bgOverlay.add(mfp.wrap).prependTo( mfp.st.prependTo || $(document.body) );
 
 		// Save last focused element
 		mfp._lastFocusedEl = document.activeElement;
-
+		
 		// Wait for next cycle to allow CSS transition
 		setTimeout(function() {
-
+			
 			if(mfp.content) {
 				mfp._addClassToMFP(READY_CLASS);
 				mfp._setFocus();
@@ -15399,7 +15399,7 @@ MagnificPopup.prototype = {
 				// if content is not defined (not loaded e.t.c) we add class only for BG
 				mfp.bgOverlay.addClass(READY_CLASS);
 			}
-
+			
 			// Trap the focus in popup
 			_document.on('focusin' + EVENT_NS, mfp._onFocusIn);
 
@@ -15458,7 +15458,7 @@ MagnificPopup.prototype = {
 			}
 			$('html').css(windowStyles);
 		}
-
+		
 		_document.off('keyup' + EVENT_NS + ' focusin' + EVENT_NS);
 		mfp.ev.off(EVENT_NS);
 
@@ -15478,14 +15478,14 @@ MagnificPopup.prototype = {
 		if(mfp.st.autoFocusLast && mfp._lastFocusedEl) {
 			$(mfp._lastFocusedEl).focus(); // put tab focus back
 		}
-		mfp.currItem = null;
+		mfp.currItem = null;	
 		mfp.content = null;
 		mfp.currTemplate = null;
 		mfp.prevHeight = 0;
 
 		_mfpTrigger(AFTER_CLOSE_EVENT);
 	},
-
+	
 	updateSize: function(winHeight) {
 
 		if(mfp.isIOS) {
@@ -16894,7 +16894,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
  * class helper functions
  * from bonzo https://github.com/ded/bonzo
  * MIT license
- *
+ * 
  * classie.has( elem, 'my-class' ) -> true/false
  * classie.add( elem, 'my-new-class' )
  * classie.remove( elem, 'my-unwanted-class' )
@@ -17013,7 +17013,7 @@ if ( typeof define === 'function' && define.amd ) {
 	function isWin(elem) {
 		return !elem.nodeName ||
 			$.inArray(elem.nodeName.toLowerCase(), ['iframe','#document','html','body']) !== -1;
-	}
+	}		
 
 	$.fn.scrollTo = function(target, duration, settings) {
 		if (typeof duration === 'object') {
@@ -17046,7 +17046,7 @@ if ( typeof define === 'function' && define.amd ) {
 			var win = isWin(this),
 				elem = win ? this.contentWindow || window : this,
 				$elem = $(elem),
-				targ = target,
+				targ = target, 
 				attr = {},
 				toff;
 
@@ -17162,7 +17162,7 @@ if ( typeof define === 'function' && define.amd ) {
 	}
 
 	// Add special hooks so that window scroll properties can be animated
-	$.Tween.propHooks.scrollLeft =
+	$.Tween.propHooks.scrollLeft = 
 	$.Tween.propHooks.scrollTop = {
 		get: function(t) {
 			return $(t.elem)[t.prop]();
@@ -17196,7 +17196,7 @@ window.YouTube = (function($, window, document) {
             $('body').removeClass('noscroll');
         }
     };
-
+    
     var $ytVideo = $(".yt-video").on('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -17317,11 +17317,6 @@ window.YouTube = (function($, window, document) {
 
   $(function() {
     initMobileMenu();
-    $('.dolphin img').hover((function() {
-      return $(this).attr('src', 'images/dolphin@2x.gif');
-    }), function() {
-      return $(this).attr('src', 'images/dolphin.png');
-    });
     $(".nav-item a").on('click', function() {
       return $.scrollTo(this.hash, 500, {
         easing: 'swing'
