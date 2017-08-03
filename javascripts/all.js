@@ -21644,15 +21644,18 @@ window.YouTube = (function($, window, document) {
       nav: true,
       navText: '',
       responsiveClass: true,
+      loop: false,
       responsive: {
         0: {
           items: 2,
           nav: false,
+          loop: true,
           autoWidth: true
         },
         481: {
           items: 3,
           nav: false,
+          loop: true,
           autoWidth: true
         },
         641: {
