@@ -8,10 +8,11 @@ window.YouTube = (function($, window, document) {
             $('body').removeClass('noscroll');
         }
     };
-    
+
     var $ytVideo = $(".yt-video").on('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
+        $('#bg-video').get(0).pause()
 
         showVideo($(this).data('id'), function() {
 
@@ -77,6 +78,8 @@ window.YouTube = (function($, window, document) {
             $(window).trigger('modalShow');
         }).find('.close').on('click', function(e){
             e.preventDefault();
+
+            $('#bg-video').get(0).play()
 
             $popup.fadeOut(function(){
                 window.player.destroy();
