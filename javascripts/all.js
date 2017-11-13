@@ -21608,6 +21608,24 @@ window.YouTube = (function($, window, document) {
   $(function() {
     initMobileMenu();
     changeElementBg();
+    $('.js-item-hidden').addClass('hide');
+    $('.js-more-btn').on('click', function() {
+    	$(this).parent().css({'display': 'none'});
+    	$('.js-item-hidden').removeClass('hide');
+    })
+    $('.js-companies-item-btn').on('click', function(e) {
+    	var input  = $(this).find('.js-input')
+    	var currentItemHovered = $(this).closest('.companies-item').find('.js-item-hovered');
+    	var currentItemNormal = $(this).closest('.companies-item').find('.js-item-normal');
+
+    	if(input.prop("checked")) {
+    		currentItemHovered.addClass('show');
+    		currentItemNormal.addClass('hide');
+    	} else {
+    		currentItemHovered.removeClass('show');
+    		currentItemNormal.removeClass('hide');
+    	}
+    })
     $('.tooltip').on('click', function(e) {
       return e.preventDefault();
     });

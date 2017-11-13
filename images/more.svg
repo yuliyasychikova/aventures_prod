@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/more</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/more">
+            <rect id="Rectangle" stroke="#FFFFFF" stroke-width="2" x="2" y="2" width="32" height="32" rx="16"></rect>
+            <path d="M17,23.95 L17,16.09 L19.01,16.09 L19.01,23.95 L17,23.95 Z M17,13.995 L17,12 L19.01,12 L19.01,13.995 L17,13.995 Z" id="i" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>
